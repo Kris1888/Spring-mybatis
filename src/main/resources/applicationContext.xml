@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+">
+    <!-- 配置service -->
+    <bean id="userService" class="com.woniuxy.service.impl.UserServiceImpl">
+        <property name="userMapper" ref="userMapper"/>
+    </bean>
+    <!-- 配置事务管理器 -->
+    <bean id="transactionManager" class="com.woniuxy.manager.TransactionManager">
+        <property name="connectionUtils" ref="connectionUtils"/>
+    </bean>
+    <!-- 配置工具类 -->
+    <bean id="connectionUtils" class="com.woniuxy.Utils.ConnectionUtils">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!-- 配置dao -->
+    <bean id="userMapper" class="com.woniuxy.mapper.impl.UserMapperImpl">
+        <property name="query" ref="query"/>
+        <property name="connectionUtils" ref="connectionUtils"/>
+    </bean>
+    <!-- 配置QueryRunner -->
+    <bean id="query" class="org.apache.commons.dbutils.QueryRunner"></bean>
+
+    <!-- 配置数据源 -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/bbb"/>
+        <property name="username" value="root"/>
+        <property name="password" value=""/>
+    </bean>
+    <!-- 配置AOP -->
+    <aop:config>
+        <!-- 配置公共的切入点表达式 -->
+        <aop:pointcut id="pt" expression="execution(* com.woniuxy.service.impl.*.*(..))"/>
+        <!-- 配置切面 -->
+        <aop:aspect ref="transactionManager">
+            <!-- 配置前置通知 -->
+            <aop:before method="beginTransaction" pointcut-ref="pt"/>
+            <!-- 配置返回通知 -->
+            <aop:after-returning method="commit" pointcut-ref="pt"/>
+            <!-- 配置异常通知 -->
+            <aop:after-throwing method="rollback" pointcut-ref="pt"/>
+            <!-- 配置后置通知 -->
+            <aop:after method="close" pointcut-ref="pt"/>
+        </aop:aspect>
+    </aop:config>
+</beans>

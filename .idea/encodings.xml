@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/../Redis" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../dataredis" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jwt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../musicdemol" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../nginxdemol" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../redisdemol" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../shiro-jwt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ssm1" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

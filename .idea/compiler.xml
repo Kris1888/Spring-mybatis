@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="redis" />
+        <module name="Spring-mybatis" />
+        <module name="springmvc" />
+        <module name="musicdemol" />
+        <module name="shiro-jwt" />
+        <module name="dataredis" />
+        <module name="nginxdemol" />
+        <module name="jwt" />
+        <module name="redisdemol" />
+        <module name="ssm1" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="redis" target="1.8" />
+      <module name="springmvc" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="dataredis" options="-parameters" />
+      <module name="jwt" options="-parameters" />
+      <module name="musicdemol" options="-parameters" />
+      <module name="nginxdemol" options="-parameters" />
+      <module name="redis" options="-parameters" />
+      <module name="redisdemol" options="-parameters" />
+      <module name="shiro-jwt" options="-parameters" />
+      <module name="springmvc" options="-parameters" />
+    </option>
+  </component>
+</project>
